@@ -4,76 +4,71 @@
 static const unsigned int borderpx = 3; /* border pixel of windows */
 static const unsigned int gappx = 30;   /* gap pixel between windows */
 static const unsigned int snap = 32;    /* snap pixel */
-static const int showbar = 0;           /* 0 means no bar */
-static const int topbar = 1;            /* 0 means bottom bar */
-static const char *fonts[] = {"Cascadia Code,Noto,monospace:size=16"};
-static const char dmenufont[] = {"Cascadia Code,Noto,monospace:size=16"};
+static const int showbar = 1;           /* 0 means no bar */
+static const int topbar = 0;            /* 0 means bottom bar */ 
+static char *fonts[] = {"Ubuntu Mono:size=14:antialias=true", "Symbols Nerd Font:pixelsize=14:antialias=true:autohint=true"};
+static const char dmenufont[] = {"Ubuntu Mono, nato, monospace:size=14"};
 static const unsigned int baralpha = 0xd0;
 static const unsigned int borderalpha = OPAQUE;
-static char normbgcolor[] = "#222222";
+static char normbgcolor[] = "#2b2b2b";
 static char normbordercolor[] = "#444444";
-static char normfgcolor[] = "#bbbbbb";
-static char selfgcolor[] = "#eeeeee";
+static char normfgcolor[] = "#565656";
+static char selfgcolor[] = "#2c2c2c";
 static char selbordercolor[] = "#005577";
-static char selbgcolor[] = "#005577";
+static char selbgcolor[] = "#8c8c8c";
 static char *colors[][3] = {
-    /*               fg           bg           border   */
+    /*                 fg            bg           border    */
     [SchemeNorm] = {normfgcolor, normbgcolor, normbordercolor},
     [SchemeSel] = {selfgcolor, selbgcolor, selbordercolor},
 };
 static const unsigned int alphas[][3] = {
-    /*               fg      bg        border     */
+    /*                fg       bg        border   */
     [SchemeNorm] = {OPAQUE, baralpha, borderalpha},
     [SchemeSel] = {OPAQUE, baralpha, borderalpha},
 };
 
 /* tagging */
-static const char *tags[] = {"", "", "", "", "",
-                             "", "", "", ""};
+static const char *tags[] = {"1", "2", "3", "4", "5", "6", "7", "8", "9"};
 
 static const Rule rules[] = {
     /* xprop(1):
      *    WM_CLASS(STRING) = instance, class
      *    WM_NAME(STRING) = title
      */
-    /* class                    instance    title       tags mask iscentered
-       isfloating   monitor */
-    {"csgo_linux64", NULL, NULL, 1, 0, 0, 0},
-    {"Dirt4", NULL, NULL, 1, 0, 0, 0},
+    /* class instance, title, tags, mask, iscentered, isfloating, monitor */
     {"code-oss", NULL, NULL, 1, 0, 0, 0},
     {"Eclipse", NULL, NULL, 1, 0, 0, 0},
     {"Darktable", NULL, NULL, 1, 0, 0, 0},
-    {"Gimp", NULL, NULL, 1, 0, 0, 0},
     {"kdenlive", NULL, NULL, 1, 0, 0, 0},
     {"resolve", NULL, NULL, 1, 0, 0, 0},
-    {"Spotify", NULL, NULL, 1, 0, 0, 1},
-    {"spotify", NULL, NULL, 1, 0, 0, 1},
+    {"Spotify", NULL, NULL, 1, 0, 0, 0},
+    {"spotify", NULL, NULL, 1, 0, 0, 0},
 
     {"Steam", NULL, NULL, 1 << 1, 0, 0, 0},
     {"Lutris", NULL, NULL, 1 << 1, 0, 0, 0},
     {"discord", NULL, NULL, 1 << 1, 0, 0, 0},
     {"jetbrains-idea-ce", NULL, NULL, 1 << 1, 0, 0, 0},
 
-    {"dolphin", NULL, NULL, 1 << 2, 0, 0, -1},
-    {"Tor Browser", NULL, NULL, 1 << 2, 0, 1, -1},
-    {"Thunar", NULL, NULL, 1 << 2, 0, 0, -1},
-    {"Org.gnome.Nautilus", NULL, NULL, 1 << 2, 0, 0, -1},
-    {"org.gnome.Nautilus", NULL, NULL, 1 << 2, 0, 0, -1},
-    {"transmission", NULL, NULL, 1 << 2, 0, 0, 1},
-    {"Transmission-gtk", NULL, NULL, 1 << 2, 0, 0, 1},
+    {"dolphin", NULL, NULL, 1 << 2, 0, 0, 0},
+    {"Tor Browser", NULL, NULL, 1 << 2, 0, 1, 0},
+    {"Thunar", NULL, NULL, 1 << 2, 0, 0, 0},
+    {"Org.gnome.Nautilus", NULL, NULL, 1 << 2, 0, 0, 0},
+    {"org.gnome.Nautilus", NULL, NULL, 1 << 2, 0, 0, 0},
+    {"transmission", NULL, NULL, 1 << 2, 0, 0, 0},
+    {"Transmission-gtk", NULL, NULL, 1 << 2, 0, 0, 0},
 
-    {"firefox", NULL, NULL, 1 << 3, 0, 0, -1},
-    {"Chromium", NULL, NULL, 1 << 3, 0, 0, -1},
-    {"Brave-browser", NULL, NULL, 1 << 3, 0, 0, -1},
+    {"firefox", NULL, NULL, 1 << 2, 0, 0, 0},
+    {"Chromium", NULL, NULL, 1 << 2, 0, 0, 0},
+    {"Brave-browser", NULL, NULL, 1 << 2, 0, 0, 0},
 
-    {"obs", NULL, NULL, 1 << 4, 0, 0, -1},
-    {"Tenacity", NULL, NULL, 1 << 4, 0, 0, -1},
-    {"Audacity", NULL, NULL, 1 << 4, 0, 0, -1},
-    {"SimpleScreenRecorder", NULL, NULL, 1 << 4, 0, 0, -1},
+    {"obs", NULL, NULL, 1 << 4, 0, 0, 0},
+    {"Tenacity", NULL, NULL, 1 << 4, 0, 0, 0},
+    {"Audacity", NULL, NULL, 1 << 4, 0, 0, 0},
+    {"SimpleScreenRecorder", NULL, NULL, 1 << 4, 0, 0, 0},
 
-    {"Pavucontrol", NULL, NULL, 1 << 5, 0, 0, 1},
-    {"pavucontrol-qt", NULL, NULL, 1 << 5, 0, 0, 1},
-    {"easyeffects", NULL, NULL, 1 << 5, 0, 0, 1},
+    {"Pavucontrol", NULL, NULL, 1 << 5, 0, 0, 0},
+    {"pavucontrol-qt", NULL, NULL, 1 << 5, 0, 0, 0},
+    {"easyeffects", NULL, NULL, 1 << 5, 0, 0, 0},
 
 };
 
@@ -114,7 +109,7 @@ static const char *dmenucmd[] = {"dmenu_run", "-m",  dmenumon,       "-fn",
                                  normfgcolor, "-sb", selbordercolor, "-sf",
                                  selfgcolor,  NULL};
 static const char *roficmd[] = {"rofi", "-show", "drun"};
-static const char *termcmd[] = {"st"};
+static const char *termcmd[] = {"gnome-terminal"};
 static const char *ivolume[] = {"amixer", "-D", "pulse", "sset",
                                 "Master"
                                 "5%+"};
@@ -185,8 +180,8 @@ static Key keys[] = {
     {MODKEY | ShiftMask, XK_0, tag, {.ui = ~0}},
     {MODKEY | ShiftMask, XK_o, quit, {0}},
 
-    TAGKEYS(XK_a, 0) TAGKEYS(XK_r, 1) TAGKEYS(XK_s, 2) TAGKEYS(XK_t, 3)
-        TAGKEYS(XK_z, 4) TAGKEYS(XK_x, 5) TAGKEYS(XK_c, 6) TAGKEYS(XK_d, 7)
+    TAGKEYS(XK_1, 0) TAGKEYS(XK_2, 1) TAGKEYS(XK_3, 2) TAGKEYS(XK_4, 3)
+        TAGKEYS(XK_5, 4) TAGKEYS(XK_6, 5) TAGKEYS(XK_7, 6) TAGKEYS(XK_8, 7)
             TAGKEYS(XK_9, 8)
 };
 
